@@ -14,30 +14,33 @@ enum SUB_CMD {
 }
 
 message JoinRoomReq {
-    int64 room_id = 2; //
-    int64 uid = 3; //
+    int64 room_id = 1; //
+    int64 uid = 2; //
 }
 
 message JoinRoomRsp {
 }
 
 message ExitRoomReq {
-    int64 room_id = 2; //
-    int64 uid = 3; //
+    int64 room_id = 1; //
+    int64 uid = 2; //
 }
 
 message ExitRoomRsp {
 }
 
 message UploadReq {
-    int64 room_id = 2; //
+    int64 room_id = 1; //
+    int64 uid = 2; //
 }
 
 message UploadRsp {
 }
 
 message SendDataReq {
-    bytes data = 2;
+    int64 room_id = 1; //
+    int64 uid = 2; //
+    bytes data = 3; //
 }
 
 message SendDataRsp {
@@ -47,5 +50,6 @@ service AudioVideoServer {
     rpc JoinRoom(JoinRoomReq) returns(JoinRoomRsp) {}// 进房
     rpc ExitRoom(ExitRoomReq) returns(ExitRoomRsp) {}// 退房
     rpc Upload(UploadReq) returns(UploadRsp) {}// 开播
+    rpc SendData(SendDataReq) returns(SendDataRsp) {} // 发送数据
 }
 
