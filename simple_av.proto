@@ -1,0 +1,51 @@
+syntax="proto3";
+
+package simple_av;
+
+option go_package="simple_av";
+
+// protoc --go_out=./ simple_av.proto
+
+enum SUB_CMD {
+    InvalidAv = 0x0;//
+    JoinRoom = 0x1; //
+    ExitRoom = 0x2; //
+    Upload = 0x3; //
+}
+
+message JoinRoomReq {
+    int64 room_id = 2; //
+    int64 uid = 3; //
+}
+
+message JoinRoomRsp {
+}
+
+message ExitRoomReq {
+    int64 room_id = 2; //
+    int64 uid = 3; //
+}
+
+message ExitRoomRsp {
+}
+
+message UploadReq {
+    int64 room_id = 2; //
+}
+
+message UploadRsp {
+}
+
+message SendDataReq {
+    bytes data = 2;
+}
+
+message SendDataRsp {
+}
+
+service AudioVideoServer {
+    rpc JoinRoom(JoinRoomReq) returns(JoinRoomRsp) {}// 进房
+    rpc ExitRoom(ExitRoomReq) returns(ExitRoomRsp) {}// 退房
+    rpc Upload(UploadReq) returns(UploadRsp) {}// 开播
+}
+
