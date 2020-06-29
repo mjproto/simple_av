@@ -11,6 +11,7 @@ enum SUB_CMD {
     JoinRoom = 0x1; //
     ExitRoom = 0x2; //
     Upload = 0x3; //
+    SendData = 0x4; //
 }
 
 message JoinRoomReq {
