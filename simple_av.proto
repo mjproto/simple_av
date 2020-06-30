@@ -6,6 +6,11 @@ option go_package="simple_av";
 
 // protoc --go_out=./ simple_av.proto
 
+enum BIG_CMD {
+    INVALID_BIG_CMD = 0x0; //
+    SIMPLE_AV = 0x1; //
+}
+
 enum SUB_CMD {
     InvalidAv = 0x0;//
     JoinRoom = 0x1; //
